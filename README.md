@@ -1,4 +1,4 @@
-# 📄 Interactive Resume Builder
+# 📄 Smart Interactive Resume Builder
 
 🎯 **Smart Interactive Resume Builder**  
 💼 *Build Your Dream Resume with Style, Speed, and Simplicity!*
