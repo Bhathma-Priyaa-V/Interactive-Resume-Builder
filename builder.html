@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <center> <title>Interactive Resume Builder</title></center>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-container">
+    <header>
+      <h1>Interactive Resume Builder</h1>
+      <center> <p>Build your resume and download it instantly!</p> </center>
+    </header>
+
+    <div class="resume-builder-container">
+      <!-- ================= Left Column: Form ================= -->
+      <div class="form-section">
+        <!-- === Personal Information === -->
+        <h2>Personal Information</h2>
+
+        <div class="form-group">
+          <label for="profilePhoto">Profile Photo:</label>
+          <input type="file" id="profilePhoto" accept="image/*" onchange="loadProfilePhoto(event)" />
+        </div>
+
+        <div class="form-group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" placeholder="Enter your name" />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" placeholder="Enter your email" />
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone:</label>
+          <input type="text" id="phone" placeholder="Enter your mobile number" />
+        </div>
+
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <input type="text" id="location" placeholder="Enter your city" />
+        </div>
+
+        <div class="form-group">
+          <label for="linkedin">LinkedIn:</label>
+          <input type="text" id="linkedin" placeholder="Enter your LinkedIn profile link" />
+        </div>
+
+        <div class="form-group">
+          <label for="github">GitHub:</label>
+          <input type="text" id="github" placeholder="Enter your GitHub profile link" />
+        </div>
+
+        <div class="form-group">
+          <label for="summary">Profile Summary:</label>
+          <textarea id="summary" placeholder="Write a brief summary..."></textarea>
+        </div>
+
+        <!-- === Education === -->
+        <h2>Education</h2>
+        <div id="educationSection">
+          <div class="edu-entry">
+            <label>Institute Name:</label>
+            <input type="text" placeholder="Enter institute name" />
+            <label>Degree:</label>
+            <input type="text" placeholder="Enter your degree" />
+            <label>Duration:</label>
+            <input type="text" placeholder="e.g. 2022–2026" />
+            <label>Percentage/CGPA:</label>
+            <input type="text" placeholder="Enter CGPA or percentage" />
+          </div>
+        </div>
+        <button type="button" onclick="addEducation()">+ Add Education</button>
+
+        <!-- === Experience === -->
+        <h2>Experience</h2>
+        <div id="experienceSection">
+          <div class="exp-entry">
+            <label>Company Name:</label>
+            <input type="text" placeholder="Enter company name" />
+            <label>Role:</label>
+            <input type="text" placeholder="Enter your role" />
+            <label>Duration:</label>
+            <input type="text" placeholder="e.g. Jan 2024 – Apr 2024" />
+          </div>
+        </div>
+        <button type="button" onclick="addExperience()">+ Add Experience</button>
+
+        <!-- === Skills === -->
+        <h2>Skills</h2>
+        <div class="form-group">
+          <label>Predefined Skills:</label>
+          <div class="predefined-skills">
+            <label><input type="checkbox" value="HTML5"> HTML5</label>
+            <label><input type="checkbox" value="CSS3"> CSS3</label>
+            <label><input type="checkbox" value="JavaScript"> JavaScript</label>
+            <label><input type="checkbox" value="Python"> Python</label>
+            <label><input type="checkbox" value="Java"> Java</label>
+            <label><input type="checkbox" value="C"> C</label>
+            <label><input type="checkbox" value="SQL"> SQL</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="customSkill">Other Skills:</label>
+          <input type="text" id="customSkill" placeholder="Type a skill and press Enter" onkeydown="handleSkillInput(event)" />
+          <div id="customSkillList"></div>
+        </div>
+
+        <!-- === Projects === -->
+        <h2>Projects (Optional)</h2>
+        <div id="projectSection">
+          <div class="proj-entry">
+            <label>Project Title:</label>
+            <input type="text" placeholder="Enter project title" />
+            <label>Project Description:</label>
+            <textarea placeholder="Describe your project briefly"></textarea>
+          </div>
+        </div>
+        <button type="button" onclick="addProject()">+ Add Project</button>
+
+        <!-- === Certifications === -->
+        <h2>Certifications (Optional)</h2>
+        <div class="form-group">
+          <input type="text" id="certInput" placeholder="Enter a certification and press Enter" onkeydown="handleCertificationInput(event)" />
+          <ul id="certList"></ul>
+        </div>
+
+        <!-- === Achievements === -->
+        <h2>Achievements (Optional)</h2>
+        <div class="form-group">
+          <input type="text" id="achieveInput" placeholder="Enter an achievement and press Enter" onkeydown="handleAchievementInput(event)" />
+          <ul id="achieveList"></ul>
+        </div>
+
+        <!-- === Buttons === -->
+        <div class="form-buttons">
+          <button type="button" onclick="clearForm()">Clear</button>
+          <button type="button" onclick="generatePreview()">Generate Resume</button>
+        </div>
+      </div>
+
+      <!-- ================= Right Column: Resume Preview ================= -->
+      <!-- RIGHT COLUMN -->
+      <div class="preview-section">
+        <h2>Live Resume Preview</h2>
+
+        <!-- This preview only shows on-screen -->
+        <img id="profilePhotoPreview" style="max-width: 100px; border-radius: 50%; margin-bottom: 10px; visibility: hidden;" />
+
+        <!-- This wrapper is used for PDF download -->
+        <div id="resumePreviewWrapper">
+          <div id="resumePreview">
+            <!-- Filled by JS -->
+          </div>
+        </div>
+
+        <button type="button" id="downloadBtn">Download as PDF</button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
